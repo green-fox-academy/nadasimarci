@@ -8,7 +8,7 @@ map2 = {
     '978-1-60309-459-7': 'Lupus',
     '978-1-60309-444-3': 'Red Panda and Moon Bear',
     '978-1-60309-461-0': 'The Lab',
-    }
+}
 
 console.log(map2);
 
@@ -17,7 +17,7 @@ console.log(map2);
 Lupus (ISBN: 978-1-60309-459-7)
 Red Panda and Moon Bear (ISBN: 978-1-60309-444-3)
 The Lab (ISBN: 978-1-60309-461-0) */
-for (let i: number = 0; i < Object.keys(map2).length; i++){
+for (let i: number = 0; i < Object.keys(map2).length; i++) {
     console.log(`${map2[Object.keys(map2)[i]]} (ISBN: ${Object.keys(map2)[i]})`)
 }
 
@@ -26,11 +26,21 @@ delete (map2['978-1-60309-444-3']);
 console.log(map2);
 
 // Remove the key-value pair with value The Lab
-Object.keys(map2).forEach(i => map2[i] === 'The Lab' ? delete map2[i]: "");
+Object.keys(map2).forEach(i => map2[i] === 'The Lab' ? delete map2[i] : "");
 console.log(map2)
 
 // Add the following key-value pairs to the map
+map2["978-1-60309-450-4"] = "They Called Us Enemy";
+map2["978-1-60309-453-5"] = "Why Did We Trust Him?";
+console.log(map2);
 
 // Print whether there is an associated value with key 478-0-61159-424-8 or not
+if (map2['478-0-61159-424-8'] == true) {
+    console.log('there is an associated value with key 478-0-61159-424-8')
+}
+else {
+    console.log('there is no associated value with key 478-0-61159-424-8')
+}
 
 // Print the value associated with key 978-1-60309-453-5
+console.log(map2['978-1-60309-453-5'])
