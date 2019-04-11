@@ -8,8 +8,8 @@ function sumOfDigits (n :number) :number{
     if (n == 0){
       return 0;
     }
-      return (n % 10 + sumOfDigits(n / 10));
+      return (n % 10 + sumOfDigits(Math.floor(n / 10)))
   }
   
-  console.log(Math.floor(sumOfDigits(123)));
+  console.log(sumOfDigits(12345));
   
