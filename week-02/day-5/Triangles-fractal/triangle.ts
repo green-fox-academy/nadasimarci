@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 
 // DO NOT TOUCH THE CODE ABOVE THIS LINE
 
-var heightOfTriangle = (0.5 * Math.pow(3, 0.5));
+const heightOfTriangle = (0.5 * Math.pow(3, 0.5));
 
 function triAngle(x, y, side) {
 
