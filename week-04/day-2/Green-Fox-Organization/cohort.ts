@@ -1,27 +1,31 @@
 'use strict';
 
-import { Student } from './student'
-import { Mentor } from './mentor'
+import { Person } from './person';
+import { Student } from "./student";
+import { Mentor } from "./mentor";
+import { Sponsor } from "./sponsor";
 
 export class Cohort {
-  cohortName: string;
+  name: string;
   students: Student[];
   mentors: Mentor[];
 
-  constructor(cohortName: string, students: [] = [], mentors: [] = []) {
-    this.cohortName = cohortName;
+  constructor(name: string) {
+    this.name = name;
+    this.students = [];
+    this.mentors = [];
   }
 
-  addStudent(student: Student): void {
-    this.students.push(student);
+  addStudent(Student: Student): void {
+    this.students.push(Student);
   }
 
-  addMentor(mentor: Mentor): void {
-    this.mentors.push(mentor);
+  addMentor(Mentor: Mentor): void {
+    this.mentors.push(Mentor);
   }
 
-  info(): void {
-    console.log(`The ${this.cohortName} cohort has ${this.students.length} students and ${this.mentors.length} mentors.`);
+  info() {
+    console.log(`The ${this.name} cohort has ${this.students.length} students and ${this.mentors.length} mentors.`);
   }
 }
 

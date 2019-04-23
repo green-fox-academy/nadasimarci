@@ -6,8 +6,8 @@ export class Sponsor extends Person {
   company: string;
   hiredStudents: number;
 
-  constructor(company: string = 'Google', hiredStudents: number = 0) {
-    super();
+  constructor(name?: string, age?: number, gender?: string, company: string = 'Google', hiredStudents: number = 0) {
+    super(name, age, gender);
     this.company = company;
     this.hiredStudents = this.hiredStudents;
   }

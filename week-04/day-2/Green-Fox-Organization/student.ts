@@ -6,8 +6,8 @@ export class Student extends Person {
   previousOrganization: string;
   skippedDays: number;
 
-  constructor(previousOrganization: string = 'The School of Life', skippedDays: number = 0) {
-    super();
+  constructor(name?: string, age?: number, gender?: string, previousOrganization: string = 'The School of Life', skippedDays: number = 0) {
+    super(name, age, gender);
     this.previousOrganization = previousOrganization;
     this.skippedDays = skippedDays;
   }
