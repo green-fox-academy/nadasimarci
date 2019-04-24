@@ -1,6 +1,6 @@
 'use strict';
 
-abstract class Animal {
+export abstract class Animal {
   name: string;
   age: number;
   gender: string;
@@ -38,7 +38,7 @@ class Mammal extends Animal {
   }
 }
 
-class Bird extends Animal {
+export class Bird extends Animal {
   breedType: string = 'laying eggs.'
   breed(): string {
     return this.breedType;
