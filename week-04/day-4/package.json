@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "tape": "^4.10.1"
+  },
+  "dependencies": {
+    "@types/tape": "^4.2.33"
   }
 }
