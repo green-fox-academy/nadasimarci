@@ -9,7 +9,7 @@ function checkAnagram(a: string, b: string): boolean {
   return x === y;
 }
 
-console.log(checkAnagram('mark', 'kram'))
+console.log(checkAnagram('marci', 'micra'))
 
 export { checkAnagram };
 

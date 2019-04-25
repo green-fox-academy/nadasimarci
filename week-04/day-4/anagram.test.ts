@@ -7,7 +7,7 @@ let test = require('tape').test;
 
 test('comparing anagrams', function (t: any) {
 
-  const actual: boolean = checkAnagram('mark', 'karm');
+  const actual: boolean = checkAnagram('marci', 'micra');
   const expected: boolean = true;
 
   t.equal(actual, expected);
