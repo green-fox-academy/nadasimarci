@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    width: 100%;
+    float: right;
+}
+
+.item {
+    height: 100px;
+    width: 100px;
+}
+
+.green {
+    height: 100px;
+    width: 25%;
+    background-color: rgb(113, 221, 40);
+}
+
+.yellow {
+    height: 100px;
+    width: 50%;
+    background-color: rgb(255, 217, 0);
+}
+
+.purple {
+    height: 100px;
+    width: 25%;
+    background-color: rgb(122, 55, 153);
+}
