@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: innerHTML, textContent</title>
+  </head>
+  <body>
+    <ul>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+    </ul>
+
+    <script>
+      // 1) replace the list items' content with items from this list:
+    const myList = ['apple', 'banana', 'cat', 'dog'];  
+    let myListItems = document.getElementsByTagName("li");
+    
+    for (let i = 0; i < myListItems.length; i++){
+     myListItems[i].innerHTML = myList[i]
+    }
+     
+      // 2) change the <ul> element's background color to 'limegreen'
+      //  - use css class to change the color instead of the style property
+    document.querySelector('ul').setAttribute('style', 'background-color: limegreen');
+
+    </script>
+    
+  </body>
+</html>
