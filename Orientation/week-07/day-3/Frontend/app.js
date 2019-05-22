@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// DOUBLING
 app.get('/doubling', (req, res) => {
   res.writeHead(200, {'Content-Type': 'application/json'});
   let response = {
@@ -24,6 +25,7 @@ app.get('/doubling', (req, res) => {
   }
 });
 
+// GREETER
 app.get('/greeter', (req, res) => {
   let name = req.query.name;
   let title = req.query.title;
@@ -43,6 +45,21 @@ app.get('/greeter', (req, res) => {
   } 
   else {
   res.send(greetObject)}
+});
+
+// APPEND A
+app.get('/appenda/:inputWord', (req, res) => {
+  res.writeHead(200, {'Content-Type': 'application/json'});
+
+  let response = {
+    'appended': req.params.inputWord + 'a'
+  }
+
+  res.end(JSON.stringify(response));
+});
+
+app.get('/appenda', (req, res) => {
+  res.status(404).send();
 });
 
 app.listen(PORT, () => {
