@@ -62,6 +62,35 @@ app.get('/appenda', (req, res) => {
   res.status(404).send();
 });
 
+// DO UNTIL
+app.post('/dountil/:action', (req, res) => {
+  let output = {};
+  
+  if (req.params.action === 'sum') {
+    let startSum = 0;
+    for (let i = 0; i <= 7; i++) {
+      startSum += i;
+    }
+    output = {result: startSum};
+  } 
+
+  else if (req.params.action === 'factor') {
+    let startFactor = 1;
+    for (let i = 1; i <= 4; i++) {
+      startFactor *= i;
+    }
+    output = {result: startFactor};
+  }
+
+  else if(req.params.action === undefined){
+  res.send({
+    "error": "Please provide a number!"
+  })
+}
+
+  res.json(output);
+});
+
 app.listen(PORT, () => {
   console.log(`The server is up and running on ${PORT}`);
 });
