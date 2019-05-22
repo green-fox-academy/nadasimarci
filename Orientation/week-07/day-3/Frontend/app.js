@@ -24,6 +24,27 @@ app.get('/doubling', (req, res) => {
   }
 });
 
+app.get('/greeter', (req, res) => {
+  let name = req.query.name;
+  let title = req.query.title;
+  let greetObject = {
+    "received": name + title,
+    "welcome_message": `Oh, hi there ${name}, my dear ${title}!`
+  } 
+
+  if (name === undefined && title === undefined){
+    res.send({"error":"Please provide a name and title"})
+  } 
+  else if (name === "undefined" || name === null || name === ""){
+    res.send({"error":"Please provide a name!"})
+  } 
+  else if (title === "undefined" || title === null || title === ""){
+    res.send({"error":"Please provide a title!"})
+  } 
+  else {
+  res.send(greetObject)}
+});
+
 app.listen(PORT, () => {
   console.log(`The server is up and running on ${PORT}`);
 });
