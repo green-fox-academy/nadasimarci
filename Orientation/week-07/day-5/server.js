@@ -40,6 +40,28 @@ app.get('/posts', (req, res) => {
     });
 });
 
+// ADDING A NEW POST
+app.post('/posts', (req, res) => {
+    conn.query(`INSERT INTO posts (title, url) VALUES ("${req.body.title}", "${req.body.url}");`, (err,rows) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500);
+            return;
+        }
+        console.log('data successfully inserted into DB');
+        res.status(200).json(rows);
+    });
+
+    conn.query(`SELECT * FROM posts ORDER BY id DESC LIMIT 1;`, (err, rows) => {
+        if (err) {
+            console.log(err.toString());
+            res.status(500);
+            return;
+        }
+        res.status(200).json(rows);
+    });
+});
+
 app.listen(PORT, () => {
 console.log(`Server is up and running on port ${PORT} 🔥`);
 });
