@@ -27,6 +27,19 @@ console.log('connection to DB is OK ✨');
 // TEST SERVER
 app.get('/hello', (req, res) => res.send('Hello World!'))
 
+// LISTING THE POSTS
+app.get('/posts', (req, res) => {
+    conn.query(`SELECT * FROM posts;`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500);
+        return;
+      }
+      console.log('data successfully requested from DB');
+      res.status(200).json(rows);
+    });
+});
+
 app.listen(PORT, () => {
 console.log(`Server is up and running on port ${PORT} 🔥`);
 });
