@@ -73,17 +73,16 @@ let post_id = req.params.id;
         res.status(500);
         return;
       }
-      res.status(200).json(rows);
-    });
-
-    conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
-      if (err) {
-        console.log(err.toString());
-        res.status(500);
-        return;
-      }
-      console.log('UPVOTE!');
-      res.status(200).json(rows);
+    
+      conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
+        if (err) {
+          console.log(err.toString());
+          res.status(500);
+          return;
+        }
+        console.log('UPVOTE!');
+        res.status(200).json(rows);
+        });
     });
 });
 
@@ -97,17 +96,16 @@ let post_id = req.params.id;
         res.status(500);
         return;
       }
-      res.status(200).json(rows);
-    });
     
-    conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
-      if (err) {
-        console.log(err.toString());
-        res.status(500);
-        return;
-      }
-      console.log('DOWNVOTE!');
-      res.status(200).json(rows);
+      conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
+        if (err) {
+          console.log(err.toString());
+          res.status(500);
+          return;
+        }
+        console.log('DOWNVOTE!');
+        res.status(200).json(rows);
+        });
     });
 });
 
