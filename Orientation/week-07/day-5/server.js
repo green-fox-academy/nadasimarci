@@ -62,6 +62,56 @@ app.post('/posts', (req, res) => {
     });
 });
 
+// VOTING - UP
+
+app.put('/posts/:id/upvote', (req, res) => {
+let post_id = req.params.id;
+
+    conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${post_id};`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500);
+        return;
+      }
+      res.status(200).json(rows);
+    });
+
+    conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500);
+        return;
+      }
+      console.log('UPVOTE!');
+      res.status(200).json(rows);
+    });
+});
+
+// VOTING - DOWN
+app.put('/posts/:id/downvote', (req, res) => {
+let post_id = req.params.id;
+    
+    conn.query(`UPDATE posts SET score = score - 1 WHERE id = ${post_id};`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500);
+        return;
+      }
+      res.status(200).json(rows);
+    });
+    
+    conn.query(`SELECT score FROM posts WHERE id=${post_id};`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500);
+        return;
+      }
+      console.log('DOWNVOTE!');
+      res.status(200).json(rows);
+    });
+});
+
+
 app.listen(PORT, () => {
 console.log(`Server is up and running on port ${PORT} 🔥`);
 });
