@@ -1,12 +1,16 @@
 'use strict';
 
+const dotenv = require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
-const app = express();
-require('dotenv').config();
+const path = require('path');
 const PORT = 3000;
 
-app.use(express.static('public'));
+const app = express();
+
+const table_book_mast = 'book_mast';
+
+app.use('/public', express.static('public'));
 app.use(express.json());
 
 const conn = mysql.createConnection({
@@ -24,50 +28,37 @@ conn.connect(err => {
   console.log('connection to DB is OK ✨');
 });
 
-// app.post('/add', (req, res) => {
-//   conn.query(
-//     `INSERT INTO ${table} (name, height) VALUES ("${req.body.name}", ${
-//       req.body.height
-//     });`,
-//     (err, rows) => {
-//       if (err) {
-//         console.log(err.toString());
-//         return;
-//       }
-//       console.log('data successfully added to database');
-//       res.status(201).send(rows);
-//     }
-//   );
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/Public/index.html'));
+});
 
-// LIST BOOK TITLES
-app.get('/alltitle', (req, res) => {
-  conn.query(`SELECT book_name FROM book_mast;`, (err, rows) => {
+app.get('/alltitles', (req, res) => {
+  
+  conn.query(`SELECT book_name FROM ${table_book_mast};`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
-    }
+    };
     console.log('data successfully requested from DB');
-    res.json(rows);
+    res.send(result);
+    //res.json(result);
   });
 });
 
-// ALL BOOKS WITH FULL DATA
-app.get('/fulldata', (req, res) => {
-  conn.query(`SELECT book_name AS 'Title of Book', author.aut_name AS 'Name of Author', category.cate_descrip AS 'Category', publisher.pub_name AS 'Publsiher', book_mast.book_price AS 'Price' FROM book_mast
-  INNER JOIN author ON author.aut_id=book_mast.aut_id
-  INNER JOIN category ON category.cate_id=book_mast.cate_id
-  INNER JOIN publisher ON publisher.pub_id=book_mast.pub_id
-  ORDER BY book_mast.book_id ASC;`, (err, rows) => {
+app.get('/allbooks', (req, res) => {
+  
+  conn.query(`SELECT book_name, aut_name, cate_descrip, pub_name, book_price FROM ${table_book_mast}
+    JOIN category ON book_mast.cate_id = category.cate_id
+    JOIN author ON book_mast.aut_id = author.aut_id
+    JOIN publisher ON book_mast.pub_id = publisher.pub_id;`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
-    }
+    };
     console.log('data successfully requested from DB');
-    res.json(rows);
+    res.send(result);
+    //res.json(result);
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is up and running on port ${PORT} 🔥`);
-});
+app.listen(PORT, () => {console.log(`Server is up and running on port ${PORT} 🔥`);});
