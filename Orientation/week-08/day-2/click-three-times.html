@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>click me</button>
+
+    <script>
+        'use strict';
+
+        // If the user clicks the button 3 times, and 5 seconds is already elapsed since the page is loaded, a text should appear under the button:
+        // 5 seconds elapsed and clicked 3 times
+        // If the user starts clicking before the first 5 seconds, nothing should be printed
+
+        let body = document.getElementsByTagName('body')[0];
+        let button = document.getElementsByTagName('button')[0];
+        let textElement = document.createElement('p');
+        body.appendChild(textElement);
+
+        let counter = 0;
+
+        const increaseCounter = () => {
+        counter++;
+        };
+
+        const timeoutFunction = () => {
+        button.addEventListener('click', increaseCounter);
+
+        setTimeout(() => {
+            if (counter >= 3) {
+            textElement.textContent = '5 seconds elapsed and clicked 3 times';
+            }
+            console.log('5s passed');
+        }, 5000);
+        }
+
+        document.addEventListener("DOMContentLoaded", timeoutFunction);
+    </script>
+</body>
+</html>
