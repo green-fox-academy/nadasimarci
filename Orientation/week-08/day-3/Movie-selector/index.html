@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Movie Selector</title>
+</head>
+
+<body>
+    
+    <div class="main-container">
+        <h1 class="main-title">Movie Selector</h1>
+
+        <form action="">
+            <input id="genre-list" list="genres" name="genre" placeholder="Select a genre">
+            <datalist id="genres">
+                <option value="Sci-fi">
+                <option value="Drama">
+                <option value="Comedy">
+            </datalist>
+                
+            <input list="movies" name="movie" placeholder="Select a movie">
+            <datalist id="movies">
+                <option value="Moon" class="Sci-fi" value="Moon">
+                <option value="2001: A Space Odyssey" class="Drama" value="2001: A Space Odyssey">
+                <option value="Contact" class="Comedy" value="Contact">
+                <option value="Darkest Hour" class="Sci-fi" value="Darkest Hour">
+                <option value="There Will Be Blood" class="Drama" value="There Will Be Blood">
+                <option value="American Beauty" class="Comedy" value="American Beauty">
+                <option value="Airplane!" class="Sci-fi" value="Airplane!">
+                <option value="Deadpool" class="Drama" value="Deadpool">
+                <option value="Wayne's World" class="Comedy" value="Wayne's World">
+            </datalist>
+        </form>
+    </div>
+
+    <script>
+        let genres = document.getElementById("genre-list");
+
+        genres.addEventListener("change", function() {
+        filterMovies(genres.value);
+        });
+
+        function filterMovies(filter) {
+        let movieOptions = document.querySelectorAll("datalist")[1].querySelectorAll('option');
+            if (filter != '') {
+                for (let i = 0; i < movieOptions.length; i++) {
+                movieOptions[i].removeAttribute('disabled');
+                    if (!movieOptions[i].classList.contains(filter)) {
+                        movieOptions[i].setAttribute('disabled', '');
+                    }
+                }
+            } 
+            else {
+                for (let i = 0; i < movieOptions.length; i++) {
+                movieOptions[i].removeAttribute('disabled');
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
