@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray
+}
+
+.main-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 30px;
+    width: 275px;
+    height: 250px;
+    padding: 50px;
+    margin: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+form {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    height: 25px;
+    display: block;
+}
+
+a{
+    float: right;
+}
+
+input[type="submit" i] {
+    width: 30%;
+    margin-top: 50px;
+}
