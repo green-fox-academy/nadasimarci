@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Button Disable</title>
+</head>
+
+<body>
+    
+    <div class="main-container">
+        
+        <form action="">
+            <h1 class="fav-pet">What is you favorite pet?</h1>
+
+            <label for="dog">dog</label>
+            <input type="radio" name="animal" value="dog" id="dog" />
+            <label for="cat">cat</label>
+            <input type="radio" name="animal" value="cat" id="cat" />
+            <label for="goldfish">Viktor the goldfish</label>
+            <input type="radio" name="animal" value="goldfish" id="goldfish" />
+
+            <h1 class="sign-up">Do you want to sign up for cat facts?</h1>
+
+            <label for="yes">Yes</label>
+            <input type="radio" name="yesno" value="yes" id="yes" />
+            <label for="no">No</label>
+            <input type="radio" name="yesno" value="no" id="no" />
+
+            <input class="i-love-cats" type="submit" value="I love cats" disabled />
+            <input  class="submit" type="submit" value="Sign up" disabled />
+        </form>
+    </div>
+
+    <script>
+        'use strict';
+
+        const iLoveCats = document.querySelector('.i-love-cats');
+        const submit = document.querySelector('.submit');
+
+        const signupYes = document.querySelector('#yes');
+        const signupNo = document.querySelector('#no');
+        const dog = document.querySelector('#dog');
+        const cat = document.querySelector('#cat');
+        const goldfish = document.querySelector('#goldfish');
+
+        window.addEventListener('click', () => {
+            if (dog.checked === true || cat.checked === true || goldfish.checked === true) {
+            submit.disabled = false;
+            }
+        });
+
+        window.addEventListener('click', () => {
+            if (signupYes.checked === true) {
+                iLoveCats.disabled = false;
+            } else if (signupYes.checked === false) {
+                iLoveCats.disabled = true;
+            }
+        });
+
+        iLoveCats.addEventListener('click', () => {
+        alert('Thank you, you\'ve successfully signed up for cat facts');
+        });
+
+        submit.addEventListener('click', () => {
+            if (signupYes.checked === false) {
+                alert('Sigh, we still added you to the cat facts list');
+            } else {
+                alert('Thank you, you\'ve successfully signed up for cat facts');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
